@@ -1,0 +1,35 @@
+.banner{
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  font-size: 40px;
+  align-items: flex-start;
+  width: 100vw;
+  height: 32rem;
+  position: relative;
+  background-image: url(../assets/gazi-hastanesi-noroloji.jpg);
+
+
+}
+*{
+  margin: 0%;
+  padding: 0%;
+}
+
+.overlay{
+  width: 100%;
+  height: 32rem;
+  
+  background-color: rgba(0.2,0,0.4,0.5);
+}
+
+.overlay .bannerline{
+  font-size: 40px;
+  color: white;
+  display: flex;
+  justify-content:center;
+  flex-direction: column;
+ 
+  margin-left: 20px;
+}

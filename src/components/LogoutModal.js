@@ -1,0 +1,35 @@
+import React, { useState, useEffect } from "react";
+import { Modal } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import Button from "@material-ui/core/Button";
+
+const LoginModal = (props) => {
+  // const [loginModalShow, setLoginModalShow] = useState(props.showModal);
+
+  console.log("PROPS in MODAL", props);
+  return (
+    <>
+      <Modal
+        show={props.show}
+        cancel={props.close}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">Logout</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Are you sure you want to Logout?</h4>
+        </Modal.Body>
+        <Modal.Footer>
+          <button>Yes</button>
+          <button>No</button>
+          {/* <Button onClick={props.close}>Cancel</Button> */}
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
+export default LoginModal;
