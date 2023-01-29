@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 function Home() {
   return (
     <>
-      <DashboardSection />
+      <DashboardSection /> 
       {/* <Cards /> */}
       <Footer />
     </>

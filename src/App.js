@@ -8,7 +8,7 @@ import Test from './pages/Test';
 import Logout from './pages/Logout';
 
 function App() {
-  return (
+  return ( 
     <>
       <Router>
         <Navbar />
@@ -18,7 +18,7 @@ function App() {
           <Route path='/test' component={Test} />
           <Route path='/logout' component={Logout} />
         </Switch>
-      </Router>
+      </Router> 
     </>
   );
 }

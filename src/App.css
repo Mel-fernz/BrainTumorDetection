@@ -7,7 +7,7 @@
 
 .home,
 .patients,
-.test,
+.test, 
 .Logout {
   display: flex;
   height: 90vh;

@@ -8,6 +8,6 @@ function DashboardSection() {
     <div className='hero-container'>
     </div>
   );
-} 
+}  
 
 export default DashboardSection;

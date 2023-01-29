@@ -30,7 +30,7 @@ export default function AlertDialog() {
       >
         <DialogTitle id="alert-dialog-title">
           {"Are you sure you want to Logout?"}
-        </DialogTitle>
+        </DialogTitle> 
         {/* <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Let Google help apps determine location. This means sending anonymous
