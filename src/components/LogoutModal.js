@@ -11,7 +11,7 @@ export default function AlertDialog() {
 
   const handleClickOpen = () => {
     setOpen(true);
-  };
+  }; 
 
   const handleClose = () => {
     setOpen(false);

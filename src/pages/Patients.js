@@ -6,3 +6,4 @@ export default function Patients() {
   return <><h1 className='patients'>Patients</h1> <Footer /></>
   
 }
+ 
