@@ -1,26 +1,15 @@
-import React from 'react'
-import "./Home.css";
+import React from 'react';
+import '../App.css';
+import DashboardSection from '../components/DashboardSection';
+import Footer from '../components/Footer';
+
 function Home() {
   return (
     <>
-     <div className='banner'>
-      <div className='overlay'>
-      <div className='bannerline'>
-      <h2>GIVING LIFE A</h2>     
-      <h2>SECOND CHANCE</h2>
-      <h5>Gray matters!</h5>      
-      </div>
-      </div>      
-     </div>
-    
-    
-    
-
-<div className='description'> 
-    </div>
+      <DashboardSection />
+      {/* <Cards /> */}
+      <Footer />
     </>
-   
-   
   );
 }
 

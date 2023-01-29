@@ -1,35 +1,49 @@
-import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import Button from "@material-ui/core/Button";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
-const LoginModal = (props) => {
-  // const [loginModalShow, setLoginModalShow] = useState(props.showModal);
+export default function AlertDialog() {
+  const [open, setOpen] = React.useState(true);
 
-  console.log("PROPS in MODAL", props);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <>
-      <Modal
-        show={props.show}
-        cancel={props.close}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
+    <div>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
+        Open alert dialog
+      </Button> */}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">Logout</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>Are you sure you want to Logout?</h4>
-        </Modal.Body>
-        <Modal.Footer>
-          <button>Yes</button>
-          <button>No</button>
-          {/* <Button onClick={props.close}>Cancel</Button> */}
-        </Modal.Footer>
-      </Modal>
-    </>
+        <DialogTitle id="alert-dialog-title">
+          {"Are you sure you want to Logout?"}
+        </DialogTitle>
+        {/* <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Let Google help apps determine location. This means sending anonymous
+            location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent> */}
+        <DialogActions>
+          <Button onClick={handleClose}>Yes</Button>
+          <Button onClick={handleClose} autoFocus>
+            No
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
-};
-
-export default LoginModal;
+}

@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
+import '../App.css';
+import Footer from '../components/Footer';
 
-function Patients() {
-  return (
-    <div>Patient_details</div>
-  )
+export default function Patients() {
+  return <><h1 className='patients'>Patients</h1> <Footer /></>
+  
 }
-
-export default Patients;

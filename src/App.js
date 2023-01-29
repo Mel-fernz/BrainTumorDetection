@@ -1,24 +1,25 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
 import Navbar from './components/Navbar';
+import './App.css';
 import Home from './pages/Home';
-import NewTest from './pages/NewTest';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Patients from './pages/Patients';
+import Test from './pages/Test';
+import Logout from './pages/Logout';
 
 function App() {
   return (
-    <Router>
-      <Navbar/>      
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/test" element={<NewTest/>}/>
-        <Route path="/patientlist" element={<Patients/>}/>
-      </Routes>
-    </Router>
-
-     
-    
-
+    <>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/patients' component={Patients} />
+          <Route path='/test' component={Test} />
+          <Route path='/logout' component={Logout} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
