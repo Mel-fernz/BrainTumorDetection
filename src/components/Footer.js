@@ -11,10 +11,11 @@ function Footer() {
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
               BTD
-              <i class='fa fa-solid fa-vial' />
+            <i class="fa fa-solid fa-brain"/>
+              
             </Link>
           </div>
-          <small class='website-rights'>BTD © 2020</small>      
+          <small class='website-rights'>BTD © 2023</small>      
         </div>
       </section>
     </div>

@@ -26,7 +26,7 @@
 }
 
 .test {
-  background-image: url('/images/img-1.jpg');
+  background-image: url('/images/patientinfo_bg.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -36,7 +36,7 @@
 
 .hero-container
 {
-  background: url('/images/medical.jpg');
+  background: url('/images/bg1.jpeg');
   background-position: center;
   background-size: fill;
   background-repeat: no-repeat;

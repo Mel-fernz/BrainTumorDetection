@@ -1,27 +1,36 @@
-video {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: -1;
+*{
+  margin: 0%;
+  padding: 0%;
 }
-  
+
 .hero-container {
-  /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
+  /* background: url('/public/images/btd.png') center center/cover no-repeat;   */
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  align-items:flex-start;
+  /* background-color: rgba(0.2,0,0.4,0.5); */
+  /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2); */
   object-fit: contain;
 }
 
-.hero-container > h1 {
-  color: #fff;
-  font-size: 100px;
+.hero-container .overlay{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0.2,0,0.4,0.5);
+}
+
+.overlay .bannerline{
+  
+  color: rgb(255, 255, 255);
+  font-size: 50px;
   margin-top: -100px;
+  margin-left: 35px;
 }
 
 .hero-container > p {
@@ -52,14 +61,12 @@ video {
 }
 
 @media screen and (max-width: 768px) {
-  .hero-container > h1 {
+  .hero-container .bannerline {
     font-size: 50px;
     margin-top: -100px;
   }
 
-  .hero-container > p {
-    font-size: 30px;
-  }
+  
 
   .btn-mobile {
     display: block;
