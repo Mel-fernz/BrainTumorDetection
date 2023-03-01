@@ -23,22 +23,22 @@ function Navbar() {
     showButton();
   }, []);
 
-  window.addEventListener('resize', showButton);
+  // window.addEventListener('resize', showButton);
 
   return (
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          <Link to='/home' className='navbar-logo' onClick={handleClick}>
             BTD
-            <i class="fa fa-solid fa-brain"/>
+            <i className="fa fa-solid fa-brain"/>
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/home' className='nav-links' onClick={handleClick}>
                 Home
               </Link>
             </li>
@@ -46,7 +46,7 @@ function Navbar() {
               <Link
                 to='/test'
                 className='nav-links'
-                onClick={closeMobileMenu}
+                onClick={handleClick}
               >
                 Test
               </Link>
@@ -55,9 +55,9 @@ function Navbar() {
               <Link
                 to='/patients'
                 className='nav-links'
-                onClick={closeMobileMenu}
+                onClick={handleClick}
               >
-                Patients
+                Reports
               </Link>
             </li>
 
@@ -72,6 +72,7 @@ function Navbar() {
             </li>
           </ul>
           {button && <Button buttonStyle='btn--outline'>LOGOUT</Button>}
+          
         </div>
       </nav>
     </>

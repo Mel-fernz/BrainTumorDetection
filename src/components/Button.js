@@ -1,15 +1,3 @@
-// import React from 'react';
-// import './Button.css';
-// import { Link } from 'react-router-dom';
-
-// export function Button() {
-//   return (
-//     <Link to='sign-up'>
-//       <button className='btn'>Sign Up</button>
-//     </Link> 
-//   );
-// } 
-
 import React from 'react';
 import './Button.css';
 import { Link } from 'react-router-dom';
@@ -20,8 +8,8 @@ const SIZES = ['btn--medium', 'btn--large'];
 
 export const Button = ({
   children,
-  type,
-  onClick,
+  // type,
+  // onClick,
   buttonStyle,
   buttonSize
 }) => {
@@ -35,8 +23,8 @@ export const Button = ({
     <Link to='/logout' className='btn-mobile'>
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-        onClick={onClick}
-        type={type}
+        // onClick={onClick}
+        // type={type}
       >
         {children}
       </button>
