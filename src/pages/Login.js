@@ -1,114 +1,72 @@
-
 import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Grid from "@mui/material/Grid";
-import { Container} from "@mui/system";
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
-
-
-
+import Signup from './Signup';
+import Home from './Home';
+import './Login.css';
 
 
 export default function Login() {
-    const [showPassword, setShowPassword] = useState(false);
+    const [login, setLogin] = useState(false);
+    const [showSignup, setShowSignup] = useState(false);
 
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-  const preventDefault = (event) => event.preventDefault();
+    const handleSignup=()=>{
+      setShowSignup(true);
+    };
+    if (showSignup) {
+      return <Signup />;
+    };
   
-
-
+  
+    const handleLogin=()=>{
+      setLogin(true);
+    };
 
   return (
-
-    <Stack spacing={3} direction="row">
-    <Container
-    sx={{
-      width: "500px",
-      height: "500px",
-      marginLeft: "450px",
-      padding: "32px 20px",
-      top: "64px",
-      gap: "64px",
     
-    }}
-  >
+    <div className='Login'>
+     {login===true?<Home/>:
 
-       <Grid container spacing={1}></Grid>
-      
-       <Grid item xs={6} className="email">
-            <h4 >EMAIL </h4>
-      <TextField id="outlined-basic" label="Email" variant="outlined" /> 
-      </Grid>
-     
+    <div className="text">
+       <h1 className='log'>Login</h1>
+        <br></br>     
+        <label className='email'>EMAIL:</label><br></br>
+        <input type="text" className='email' name="EMAIL"></input>
+          <br></br>
+          <br></br>
+        <label className='pin'>PASSWORD:</label><br></br>
+        <input type="password" className='pin' name="Password"></input><br></br>
+        <Box
+              sx={{
+            marginLeft: "170px",
+              }}
+            >
+            <Button>Forgot Password?</Button>
+            </Box>
+        <Box
+              sx={{
+            marginLeft: "160px",
+            
+              }}
+            >
+                <br></br>  
+        <Button variant="contained" size="large" onClick={handleLogin}>LOGIN</Button>
+        </Box>
+        <br></br>
+        <Box
+              sx={{
+            marginLeft: "110px",
+          
+              }}
+            >
+        <label className='account'>Need an Account?</label>
+        <Button onClick={handleSignup}>SIGN UP</Button>
+        {/* <Link to='/signup' onClick={handleSignup}>Sign up</Link> */}
+        </Box>
+              </div>
+        }
+          </div>
 
-          <Grid item xs={6} className="password">
-            <h4>PASSWORD</h4>
-          <FormControl sx={{ m: 0, width: '28ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-          <br>
-          </br>
-          <Button variant="contained"  >LOGIN</Button>
-         <br>
-         </br>
-         <Box
-      sx={{
-    marginLeft: "100px",
-      }}
-      onClick={preventDefault}
-    >
-      <Link href="#">Forgot Password?</Link>
-     
-    </Box>
-    <Grid container spacing={1}>
-
-    <Grid item xs={6} className="account">
-     <h5>Need an account?</h5>
-   
-    </Grid>
-   
-    <Grid item xs={5} className="sign">
-     <h5><Link href="#">Sign up</Link></h5>
-   
-    </Grid>
-    </Grid>
-   
-        </FormControl>
-        </Grid>
-       
-         </Container> 
-        
-         </Stack>
-       
-      
-  );
+    );
 }
