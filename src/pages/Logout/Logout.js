@@ -1,9 +1,9 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import './Logout.css';
-import Footer from '../components/Footer';
-import LogoutModal from '../components/LogoutModal'
-import Navbar from '../components/Navbar';
+import Footer from '../../components/Footer/Footer';
+import LogoutModal from '../../components/LogoutModal/LogoutModal'
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Logout() {
   return( 

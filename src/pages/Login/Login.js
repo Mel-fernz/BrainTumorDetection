@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 // import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
-import Signup from './Signup';
-import Home from './Home';
+import Signup from '../Signup/Signup';
+import Home from '../Home/Home';
 import './Login.css';
 
 

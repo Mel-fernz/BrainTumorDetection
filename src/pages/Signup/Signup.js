@@ -2,7 +2,7 @@ import './Signup.css';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import React, { useState } from 'react';
-import Login from './Login';
+import Login from '../Login/Login';
 
 const Signup=()=>{
   const [isSignedUp, setIsSignedUp] = useState(false);
@@ -40,7 +40,7 @@ const Signup=()=>{
             >
                 <br></br> 
                 
-        <Button variant="contained" size="large"  onClick={handleSignUp}>SIGNUP</Button>
+        <Button variant="contained" size="large" onClick={handleSignUp}>SIGNUP</Button>
         </Box>
       </div>
         }

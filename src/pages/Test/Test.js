@@ -1,8 +1,8 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import './Test.css';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Footer from '../../components/Footer/Footer';
+import Navbar from '../../components/Navbar/Navbar';
 
 
 export default function Test() {
