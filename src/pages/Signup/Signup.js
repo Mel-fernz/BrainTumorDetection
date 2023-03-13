@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import React, { useState } from 'react';
 import Login from '../Login/Login';
+import { Link } from 'react-router-dom';
 
 const Signup=()=>{
   const [isSignedUp, setIsSignedUp] = useState(false);
@@ -39,8 +40,9 @@ const Signup=()=>{
               }}
             >
                 <br></br> 
-                
+        <Link to="login">
         <Button variant="contained" size="large" onClick={handleSignUp}>SIGNUP</Button>
+        </Link> 
         </Box>
       </div>
         }

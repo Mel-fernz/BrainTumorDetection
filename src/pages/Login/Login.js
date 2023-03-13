@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import Signup from '../Signup/Signup';
 import Home from '../Home/Home';
 import './Login.css';
+import { Link } from 'react-router-dom';
+
 
 
 export default function Login() {
@@ -51,7 +53,9 @@ export default function Login() {
               }}
             >
                 <br></br>  
+         <Link to="/home">
         <Button variant="contained" size="large" onClick={handleLogin}>LOGIN</Button>
+        </Link> 
         </Box>
         <br></br>
         <Box
@@ -61,7 +65,9 @@ export default function Login() {
               }}
             >
         <label className='account'>Need an Account?</label>
-        <Button onClick={handleSignup}>SIGN UP</Button>
+        <Link to="/signup">
+          <Button onClick={handleSignup}>SIGN UP</Button>
+        </Link>
         {/* <Link to='/signup' onClick={handleSignup}>Sign up</Link> */}
         </Box>
               </div>
