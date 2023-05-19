@@ -3,6 +3,8 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Link } from 'react-router-dom';
+
 
 export default function AlertDialog() {
   const [open, setOpen] = useState(true);
@@ -27,10 +29,14 @@ export default function AlertDialog() {
           {"Are you sure you want to Logout?"}
         </DialogTitle> 
         <DialogActions>
+
+         <Link to="/" style={{textDecoration:'none'}}>
           <Button onClick={handleClose}>Yes</Button>
-          <Button onClick={handleClose} autoFocus>
-            No
-          </Button>
+          </Link>
+
+         <Link to="/home" style={{textDecoration:'none'}}>
+          <Button onClick={handleClose} autoFocus>No</Button>
+          </Link>
         </DialogActions>
       </Dialog>
     </div>
