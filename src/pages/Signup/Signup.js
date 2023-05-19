@@ -40,7 +40,7 @@ const Signup=()=>{
               }}
             >
                 <br></br> 
-        <Link to="login">
+        <Link to="/" style={{textDecoration:'none'}}>
         <Button variant="contained" size="large" onClick={handleSignUp}>SIGNUP</Button>
         </Link> 
         </Box>
