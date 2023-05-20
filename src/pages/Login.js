@@ -60,6 +60,7 @@ function Login() {
   };
 
   const handleLogin = async () => {
+    // e.preventDefault();
     await fetch("http://localhost:3001/api/login", {
       method: "POST",
       headers: {

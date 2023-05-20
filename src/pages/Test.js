@@ -3,7 +3,7 @@ import '../App.css';
 import './Test.css';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import PatientDetails from '../components/PatientDetails'
+// import PatientDetails from '../components/PatientDetails'
 
 
 export default function Test() {
@@ -11,7 +11,7 @@ export default function Test() {
   <>
   <Navbar/>
   <div className='test'>
-  <PatientDetails/> 
+  {/* <PatientDetails/>  */}
   </div>
   
    <Footer />
