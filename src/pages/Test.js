@@ -3,13 +3,17 @@ import '../App.css';
 import './Test.css';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import PatientDetails from '../components/PatientDetails'
 
 
 export default function Test() {
   return(
   <>
   <Navbar/>
-   <h1 className='test'>Test</h1>  
+  <div className='test'>
+  <PatientDetails/> 
+  </div>
+  
    <Footer />
    </>
    )

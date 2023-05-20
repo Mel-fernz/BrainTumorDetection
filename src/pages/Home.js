@@ -11,6 +11,7 @@ function Home() {
       <Navbar />
       <DashboardSection /> 
       <Footer />
+    
     </>
   );
 }
