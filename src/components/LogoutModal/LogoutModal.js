@@ -6,6 +6,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Link } from 'react-router-dom';
 
 
+
 export default function AlertDialog() {
   const [open, setOpen] = useState(true);
 
@@ -18,7 +19,7 @@ export default function AlertDialog() {
   };
 
   return (
-    <div>    
+    <div className='Logout-container'>    
       <Dialog
         open={open}
         onClose={handleClose}
@@ -36,7 +37,7 @@ export default function AlertDialog() {
 
          <Link to="/home" style={{textDecoration:'none'}}>
           <Button onClick={handleClose} autoFocus>No</Button>
-          </Link>
+          </Link> 
         </DialogActions>
       </Dialog>
     </div>

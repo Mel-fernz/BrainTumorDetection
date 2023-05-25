@@ -9,7 +9,7 @@ export default function Logout() {
   return( 
     <>
     <Navbar/>
-    <h1 className='Logout'><LogoutModal/></h1>   
+    <div className='Logout'><LogoutModal/></div>   
     <Footer/>
     </>
   
