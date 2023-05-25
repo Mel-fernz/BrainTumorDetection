@@ -1,7 +1,8 @@
 import React,{ useState } from "react";
 // import "./PatientDetails.css";
 // import Button from "@mui/material/Button";
-import Report from "../Report/Report";
+import Report from "../Report/Report"
+import "./InputForm.css";
 
 function InputForm() {
   // const[inputData, setInputData]=useState({    
@@ -106,9 +107,9 @@ function InputForm() {
       debugger;
       errors.age = "Age is required";
       isValid = false;
-    } else if (isNaN(age)) {
-      errors.age = "Age must be a number";
-      isValid = false;
+    // } else if (isNaN(age)) {
+    //   errors.age = "Age must be a number";
+    //   isValid = false;
     } else if (parseInt(age) <= 0) {
       errors.age = "Age must be a positive number";
       isValid=false;
@@ -116,6 +117,11 @@ function InputForm() {
 
     if (!gender) {
       errors.gender = "Gender is required";
+      isValid = false;
+    }
+
+    if (!image) {
+      errors.image = "Image is required";
       isValid = false;
     }
 
@@ -136,31 +142,30 @@ function InputForm() {
     {submit===true?<Report firstname={fname}lastname={lname} gender={gender} age={age} mriImage={image}/>:
 
     <form className="card" onSubmit={handleSubmit}>
-      <br></br>
-      <br></br>
-      <label className="label1"> FirstName: </label>
+      <h1 className="heading">Patient Details</h1>
+
+      <label className="label1"> First Name: </label>
       <input type="text" name="fname" value={fname} onChange={handleFname}/>
       <br></br>
-      {errors.fname && <span>{errors.fname}</span>}
+      {errors.fname && <span className="error">{errors.fname}</span>}
       <br></br>
 
-      <label className="label2"> LastName: </label>
+      <label className="label2"> Last Name: </label>
       <input type="text" name="lname" value={lname} onChange={handleLname}/>
       <br></br>
-      {errors.lname && <span>{errors.lname}</span>}
+      {errors.lname && <span className="error">{errors.lname}</span>}
       <br></br>
 
       <label>
-        Age:
-        <input
+        Age:</label><input
           type="number"
           name="age"
           value={age}
           onChange={handleAge}
         />
       <br></br>
-      {errors.age && <span>{errors.age}</span>}
-      </label>
+      {errors.age && <span className="error">{errors.age}</span>}
+      
       <br></br>
 
       <label className="gender"> Gender: 
@@ -194,26 +199,20 @@ function InputForm() {
           />
           Others
         </label>
-        <br></br>
-        {errors.gender && <span>{errors.gender}</span>}
-        </label>
-              
-      <br></br>
+        {errors.gender && <span className="error">{errors.gender}</span>}
+        </label>              
       <br></br>
 
+      <div className="file">
       <label>Select an image:</label>
       <input type="file" accept="image/png, image/jpeg, image/jpg" onChange={handleImage}/>
-      {/* {selectImage && <img src={URL.createObjectURL(selectImage)}  alt="Selected Image"/>} */}
-      
+      </div>
+      <br></br>
+      {errors.image && <span className="error">{errors.image}</span>}
       <br></br>
       <br></br>
-      <button type="submit" >Submit</button>
+      <button className="gen-rep" type="submit" >GENERATE REPORT</button>
 
-      {/* <Button type="submit" variant="contained" size="small" > */}
-        {/* Generate Report */}
-      {/* </Button> */}
-      <br></br>
-      <br></br>
       <br></br>
     </form>
 }
