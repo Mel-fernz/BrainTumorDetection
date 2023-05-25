@@ -24,7 +24,7 @@ const Report = (props) => {
   }
   
   return (
-    <div>
+    <div className='report'>
       <div className='pdf-data' id="pdfdata">
         <p>first name:{props.firstname}</p>
         <p>last name:{props.lastname}</p>
