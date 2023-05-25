@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 // import Login from "./Login";
-import "./page.css";
+import "../page.css";
 import PWDRequisite from "../../components/PWDRequisite";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   // const handleFormSubmit = (event) =>{
@@ -14,7 +14,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
 
-  const navigation = useHistory();
+  const navigation = useNavigate();
   // const sendToBackend = async ()=>{
 
   //   await fetch ("http://192.168.0.173:3001/api/login",{

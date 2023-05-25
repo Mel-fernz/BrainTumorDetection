@@ -27,12 +27,10 @@ const [showLogin, setShowLogin]=useState(false);
    
         <Routes>
         <Route path='/' exact element={<Login/>} />
-
           <Route path='/signup' element={<Signup/>} />
           <Route path='/password-reset' element={<PasswordReset/>} />
           <Route path='/forgotpassword:/id/:token' element={<ForgotPassword/>}/>
           <Route path='/home' element={<Home/>} />
-          {/* <Route path='/reports' element={<Patients/>} /> */}
           <Route path='/test' element={<Test/>} />
           <Route path='/logout' element={<Logout/>} />
         </Routes>

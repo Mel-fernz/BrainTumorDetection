@@ -25,13 +25,14 @@ const PasswordReset = () => {
       });
     }
     else{
-    const res =await fetch("/sendpasswordlink",{
+    const res =await fetch("/reset-password",{
       method:'POST',
       headers:{
         "Content-Type":"application/json"
       },
       body:JSON.stringify({email})
     });
+
 
     const data=await res.json();
     if (data.status === 201){

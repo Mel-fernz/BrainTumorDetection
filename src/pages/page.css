@@ -5,7 +5,6 @@
   .container{
     background: linear-gradient(135deg,#000000, #263134);
     
-    /* background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(86, 85, 85) 100%); */
     width :100%;
     min-height:100vh;
     display:flex;
@@ -14,8 +13,8 @@
   }
   .text1{
     background-color: #fff;
-    /* min-width:250px;
-    min-height:400px; */
+    min-width:250px;
+    min-height:400px;
     padding:30px;
     box-sizing: border-box;
     border-radius:5px;
@@ -37,7 +36,6 @@
     font-size: 15px;
   }
   .password{
-    /* margin-bottom: 40px; */
     position: relative;
 bottom: 10px;
   }
@@ -95,20 +93,15 @@ bottom: 10px;
     text-transform: uppercase;
     font-size: 20px;
     border-radius: 25px;
-    /* color: white; */
     padding: 10px 60px;
     background: linear-gradient(to right,#000000,  #242424);
-    /* background: linear-gradient(90deg,#000000,  0%, #242424 100%); */
     box-shadow: rgba(0,0,0,0.3)0px 19px 38px;
     margin: auto;
     outline: none;
-    /* border: none; */
     cursor:pointer;
-    /* transition:all 0.1s; */
 
     background-color: transparent;
     color: #fff;
-    /* padding: 8px 20px; */
     border: 1px solid var(--primary);
     transition: all 0.3s ease-out;
     position: relative;

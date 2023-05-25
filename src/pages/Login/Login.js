@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import Signup from "./Signup";
+import Signup from "../Signup/Signup";
 // import Home from "./Home";
-import "./page.css";
+import "../page.css";
+import ForgotPassword from "../ForgotPassword/ForgotPassword";
+import PasswordReset from "../PasswordReset/PasswordReset";
 // import Box from "@mui/material/Box";
 // import { toast } from "react-toastify";
 
@@ -13,6 +15,7 @@ function Login() {
   // const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [forgotpass, setForgotpass] = useState("");
   //   const navigate = useNavigate();
   // const loginBackend = async () => {
   //   await fetch("http://localhost:3001/api/login", {
@@ -51,6 +54,13 @@ function Login() {
   };
   if (showSignup) {
     return <Signup />;
+  }
+
+  const handleForgotPassword = () => {
+    setForgotpass(true);
+  };
+  if (forgotpass) {
+    return <PasswordReset/>;
   }
 
   var loggedUser = {
@@ -151,7 +161,7 @@ function Login() {
               ></input>
             </div>
             <div className="link">
-              <Button>Forgot Password?</Button>
+              <Button onClick={handleForgotPassword}>Forgot Password?</Button>
             </div>
             <div>
               <button className="submit" type="button" onClick={handleLogin}>

@@ -64,17 +64,17 @@ const ForgotPassword = () => {
       body:JSON.stringify({password})      
       });
 
-      const data=await res.json()
+      // const data=await res.json()
 
-      if(data.status===201){
-        setPassword("")
-        setMessage(true)
-      }
-      else{
-        toast.error("!Token Expired. Generate new Link",{
-        position: "top-center"
-      })
-      }
+      // if(data.status===201){
+      //   setPassword("")
+      //   setMessage(true)
+      // }
+      // else{
+      //   toast.error("!Token Expired. Generate new Link",{
+      //   position: "top-center"
+      // })
+      // }
     }
   }
 
