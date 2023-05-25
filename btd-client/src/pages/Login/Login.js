@@ -2,10 +2,10 @@ import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Signup from "../Signup/Signup";
-// import Home from "./Home";
-import "../page.css";
-import ForgotPassword from "../ForgotPassword/ForgotPassword";
+// import { useParams, useNavigate} from 'react-router-dom';
 import PasswordReset from "../PasswordReset/PasswordReset";
+// import Home from "./Home";
+import '../page.css';
 // import Box from "@mui/material/Box";
 // import { toast } from "react-toastify";
 
@@ -16,53 +16,20 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [forgotpass, setForgotpass] = useState("");
-  //   const navigate = useNavigate();
-  // const loginBackend = async () => {
-  //   await fetch("http://localhost:3001/api/login", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Access-Control-Allow-Origin": "*"
-  //     },
-  //     body: JSON.stringify({
-  //       email: email,
-  //       password: password
-  //     }),
-  //   })
 
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.status === "success") {
-  //         alert("Login Success");
-  //         localStorage.setItem("loggedInDetails", JSON.stringify(loggedUser));
-  //         setLogin(true);
-  //       } else {
-  //         alert("Invalid Email or Password");
-  //       }
-  //     }
-
-  //     )
-
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     }
-  //     );
-
-  // }
   const handleSignup = () => {
     setShowSignup(true);
   };
   if (showSignup) {
     return <Signup />;
   }
-
+ 
   const handleForgotPassword = () => {
     setForgotpass(true);
   };
   if (forgotpass) {
     return <PasswordReset/>;
   }
-
   var loggedUser = {
     // name,
     email,
@@ -70,6 +37,7 @@ function Login() {
   };
 
   const handleLogin = async () => {
+  
     await fetch("http://localhost:3001/api/login", {
       method: "POST",
       headers: {
@@ -85,7 +53,7 @@ function Login() {
         if (response.status === 200) {
           alert("Login Success");
           setLogin(true);
-          window.location.href = "/Home";
+          //window.location.href = "/Home";
         } else {
           alert("Invalid Email or Password");
         }
@@ -96,37 +64,7 @@ function Login() {
       });
   };
 
-  //     const userEmail = localStorage.getItem("email")
-  //     ? localStorage.getItem("email") : 'admin@admin.com';
-
-  //   const userPassword = localStorage.getItem("password")
-  //     ? localStorage.getItem("password") : 'admin';
-
-  // let users =
-  //   localStorage.getItem("Users") == null
-  //     ? []
-  //     : JSON.parse(localStorage.getItem("Users"));
-  // console.log(users);
-  // if (users.length === 0) {
-  //   alert("Invalid Email or Password");
-  // } else {
-  //   let userindex = users.findIndex(
-  //     (x) => x.email === email && x.password === password
-  //   );
-
-  //   if (userindex === -1) {
-  //     alert.error("Invalid Email or Password");
-  //   } else {
-  //     localStorage.setItem("name", JSON.stringify(users[userindex].name));
-  //     localStorage.setItem(
-  //       "password",
-  //       JSON.stringify(users[userindex].password)
-  //     );
-  //     alert.success("Login Success");
-  //     localStorage.setItem("loggedInDetails", JSON.stringify(loggedUser));
-  //   }
-  // }
-  //   };
+ 
   return (
     <div className="container">
       <div className="text1">
