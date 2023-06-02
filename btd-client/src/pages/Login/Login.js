@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import Signup from "../Signup/Signup";
+// import Signup from "../Signup/Signup";
 // import { useParams, useNavigate} from 'react-router-dom';
-import PasswordReset from "../PasswordReset/PasswordReset";
+// import PasswordReset from "../PasswordReset/PasswordReset";
 // import Home from "./Home";
 import '../page.css';
+import { useNavigate } from 'react-router-dom';
+
 // import Box from "@mui/material/Box";
 // import { toast } from "react-toastify";
 
@@ -16,46 +18,52 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [forgotpass, setForgotpass] = useState("");
+  // const [errorMessage, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSignup = () => {
     setShowSignup(true);
   };
   if (showSignup) {
-    return <Signup />;
+    navigate("/signup");
   }
  
   const handleForgotPassword = () => {
     setForgotpass(true);
   };
   if (forgotpass) {
-    return <PasswordReset/>;
+    navigate("/password-reset");
   }
-  var loggedUser = {
-    // name,
-    email,
-    password,
-  };
+  // var loggedUser = {
+  //   // name,
+  //   email,
+  //   password,
+  // };
 
   const handleLogin = async () => {
   
-    await fetch("http://localhost:3001/api/login", {
+    fetch("/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email,
+        password
       }),
     })
-      .then((response) => {
-        if (response.status === 200) {
-          alert("Login Success");
-          setLogin(true);
-          //window.location.href = "/Home";
+      .then(async response => {
+        const data = await response.json();
+        if (response.status === 201) {
+          sessionStorage.setItem('btd-token', data.result.token);
+          alert("Login Successful");
+            navigate("/home");
+          // setLogin(true);
+          
         } else {
           alert("Invalid Email or Password");
+          // throw new Error("Login failed");
         }
       })
 

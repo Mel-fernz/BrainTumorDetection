@@ -14,25 +14,25 @@ const ForgotPassword = () => {
   const[message, setMessage]=useState("");
   const [data2, setData]=useState("");
 
-  const userValid=async()=>{
+  // const userValid=async()=>{
 
-    //api call
-    const res=await fetch(`/forgotpassword/${id}/${token}`,{
-      method:"GET",
-      headers:{
-        "Content-type":"appication/json"
-      }      
-    });
+  //   //api call
+  //   const res=await fetch(`/forgotpassword/${id}/${token}`,{
+  //     method:"GET",
+  //     headers:{
+  //       "Content-type":"appication/json"
+  //     }      
+  //   });
 
-    const data=await res.json()
+  //   const data=await res.json()
 
-    if(data.status===201){
-      // console.log("user valid")
-    }
-    else{
-      history("*")
-    }
-  }
+  //   if(data.status===201){
+  //     // console.log("user valid")
+  //   }
+  //   else{
+  //     history("*")
+  //   }
+  // }
 
   const setVal=(e)=>{
     setPassword(e.target.value)
@@ -49,7 +49,7 @@ const ForgotPassword = () => {
       });
       } 
       else if (password.length < 6) {
-        toast.error("password must be 6 char!", {
+        toast.error("password must be 6 characters!", {
           position: "top-center"
       });
 
@@ -64,22 +64,22 @@ const ForgotPassword = () => {
       body:JSON.stringify({password})      
       });
 
-      // const data=await res.json()
+      const data=await res.json()
 
-      // if(data.status===201){
-      //   setPassword("")
-      //   setMessage(true)
-      // }
-      // else{
-      //   toast.error("!Token Expired. Generate new Link",{
-      //   position: "top-center"
-      // })
-      // }
+      if(data.status===201){
+        setPassword("")
+        setMessage(true)
+        history("/")
+      }
+      else{
+        toast.error("!Token Expired. Generate new Link",{
+        position: "top-center"
+      })
+      }
     }
   }
 
     useEffect(()=>{
-    userValid()
     setTimeout(()=>{
       setData(true)
     },3000)

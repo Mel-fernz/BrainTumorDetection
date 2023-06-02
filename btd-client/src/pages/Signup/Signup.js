@@ -5,38 +5,18 @@ import PWDRequisite from "../../components/PWDRequisite";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  // const handleFormSubmit = (event) =>{
-  //     event.preventDefault();
-  // };
-  // const [isSignedUp, setIsSignedUp] = useState(false);
-  // const [name, setName] = useState("null");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
+  // const [errorMessage, setError] = useState("");
 
-  const navigation = useNavigate();
-  // const sendToBackend = async ()=>{
+  const navigate = useNavigate();
 
-  //   await fetch ("http://192.168.0.173:3001/api/login",{
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Access-Control-Allow-Origin" : "*"
-  //     },
-  //     body: JSON.stringify({
-  //       name: name,
-  //       email: email,
-  //       password: password
-  //     }),
-  //     })
-
-  // }
-
-  var loggedUser = {
-    // name,
-    email,
-    password,
-  };
+  // var loggedUser = {
+  //   // name,
+  //   email,
+  //   password,
+  // };
 
   //password strength
   const [pwdRequisite, setPWDRequisite] = useState(false);
@@ -60,7 +40,7 @@ const Signup = () => {
     const capsLetterCheck = /[A-Z]/.test(value);
     const numberCheck = /[0-9]/.test(value);
     const pwdLengthCheck = value.length >= 8;
-    const specialCharCheck = /[!@#$%^&*]/.test(value);
+  const specialCharCheck = /[.-_$*()#@!%/]/.test(value);
     setChecks({
       capsLetterCheck,
       numberCheck,
@@ -70,61 +50,66 @@ const Signup = () => {
   };
 
   const handleSignUp = async () => {
-    // let users =
-    //   localStorage.getItem("Users") == null
-    //     ? []
-    //     : JSON.parse(localStorage.getItem("Users"));
-    // console.log(users);
-    // if (users.length === 0) {
-    //   alert("Invalid Email or Password");
-    // } else {
-    //   let userindex = users.findIndex(
-    //     (x) => x.email === email && x.password === password
-    //   );
-
-    //   if (userindex === -1) {
-    //     alert.error("Invalid Email or Password");
-    //   } else {
-    //     localStorage.setItem("name", JSON.stringify(users[userindex].name));
-    //     localStorage.setItem(
-    //       "password",
-    //       JSON.stringify(users[userindex].password)
-    //     );
-    //     alert.success("Login Success");
-    //     localStorage.setItem("loggedInDetails", JSON.stringify(loggedUser));
-    //   }
-    // }
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      email: email,
-      password: password,
-    });
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch("http://localhost:3001/api/register", requestOptions)
-      .then((response) => {
-        if (response.status === 201) {
-          alert.success("Login Success");
+    console.log("signup");
+ 
+      try {
+        const response = await fetch("/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email,
+            password,
+            cpassword
+          })
+        });
+        const data = await response.json();
+          
+        if (response.ok) {
+        
+          navigate("/");
         } else {
-          alert.error("Invalid Email or Password");
-        }
-        return response.text();
-      })
-      .then((result) => console.log(result))
-      .then(() => {
-        navigation.push("/login");
-      })
 
-      .catch((error) => console.log("error", error));
+          alert("Signup failed");
+          // setError(data.error)
+          // throw new Error("Signup failed");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        // Handle the error
+      }
+    
+    // var myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
+
+    // var raw = JSON.stringify({
+    //   email: email,
+    //   password: password,
+    // });
+
+    // var requestOptions = {
+    //   method: "POST",
+    //   headers: myHeaders,
+    //   body: raw,
+    //   redirect: "follow",
+    // };
+
+    // fetch("http://localhost:3001/api/register", requestOptions)
+    //   .then((response) => {
+    //     if (response.status === 201) {
+    //       alert.success("Login Success");
+    //     } else {
+    //       alert.error("Invalid Email or Password");
+    //     }
+    //     return response.text();
+    //   })
+    //   .then((result) => console.log(result))
+    //   .then(() => {
+    //     navigation.push("/login");
+    //   })
+
+    //   .catch((error) => console.log("error", error));
 
     // setIsSignedUp(true);
   };
@@ -203,7 +188,7 @@ const Signup = () => {
               ></input>
             </div>
 
-            <div>
+            {/* <div>
               {pwdRequisite ? (
                 <PWDRequisite
                   capsLetterFlag={checks.capsLetterCheck ? "valid" : "invalid"}
@@ -214,7 +199,7 @@ const Signup = () => {
                   }
                 />
               ) : null}
-            </div>
+            </div> */}
             <br></br>
             <br></br>
 
