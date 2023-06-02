@@ -110,7 +110,7 @@ function InputForm() {
     // } else if (isNaN(age)) {
     //   errors.age = "Age must be a number";
     //   isValid = false;
-    } else if (parseInt(age) <= 0) {
+    } else if (age <= 0) {
       errors.age = "Age must be a positive number";
       isValid=false;
     }

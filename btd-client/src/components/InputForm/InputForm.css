@@ -47,7 +47,7 @@
 	right: 0; */
 	width: 500px;
 	height: 650px;
-  color: #001eff;
+  color: #000000;
   /* height: 100vh;
   width: 100%; */
   /* display: flex;
@@ -58,7 +58,7 @@
 
 }
 .card:before{
-  background-image: url("/public/images/brainbg3.jpg");
+  background-image: url("/images/brainbg3.jpg");
 	width: 100%;
 	height: 100%;
 	background-size: cover;
@@ -78,7 +78,7 @@
   font-size: 20px;
   border-radius: 25px;
   padding: 10px 60px;
-  background: linear-gradient(to right,#001eff,  #01041c);
+  background: linear-gradient(135deg,#000000, #263134);
   box-shadow: rgba(0,0,0,0.3)0px 19px 38px;
   margin: auto;
   outline: none;

@@ -1,0 +1,87 @@
+/* .pdf-data {
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.pdf-data p {
+  margin: 10px 0;
+}
+
+.pdf-data img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.pdf-data button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+} */
+
+.pdf-data {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px;
+  border: 2px double #000000;
+}
+
+.pdf-data h4 {
+  color: #000000;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.pdf-data img {
+  max-width: 70%;
+  max-height: 70%;
+  margin-top: 5px;
+} 
+
+/* body .report{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+} */
+
+.flex-btn{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+ button {
+  padding: 10px 20px;
+  background-color: #202020;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.report{
+  display:block;
+  font-size: 15px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  
+}
+.heading{
+  text-align: center;
+  /* color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px; */
+}
+
+.patient-name{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
