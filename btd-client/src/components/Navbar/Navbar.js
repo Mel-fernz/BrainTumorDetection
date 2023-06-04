@@ -56,16 +56,6 @@ function Navbar() {
               </Link>
             </li>
 
-            {/* <li className='nav-item'>
-              <Link
-                to='/reports'
-                className='nav-links'
-                onClick={handleClick}
-              >
-                Reports
-              </Link>
-            </li> */}
-
             <li>
               <Link
                 to='/logout'

@@ -74,14 +74,12 @@
 
  .gen-rep{
   display: flex;
-  text-transform: uppercase;
   font-size: 20px;
   border-radius: 25px;
   padding: 10px 60px;
   background: linear-gradient(135deg,#000000, #263134);
   box-shadow: rgba(0,0,0,0.3)0px 19px 38px;
-  margin: auto;
-  outline: none;
+  margin: auto;  
   cursor:pointer;
   background-color: transparent;
   color: #fff;
@@ -89,6 +87,11 @@
   transition: all 0.3s ease-out;
   position: relative;
   bottom: 5px;
+ }
+
+ .gen-rep:hover{
+  background: linear-gradient(135deg,#1a1a1a, #425155);
+  
  }
 
  .file{

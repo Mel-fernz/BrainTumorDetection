@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './passwordReset.css';
 
+
 const PasswordReset = () => {
 
   const[email,setEmail]=useState("");
@@ -17,11 +18,11 @@ const PasswordReset = () => {
 
     if(email===""){
       toast.error("Email is required!",{
-        position:"top-center"
+        position:toast.POSITION.TOP_LEFT
       });
     }else if(!email.includes("@")){
-      toast.warning("invalid email",{
-        position:"top-center"
+      toast.error("Invalid email",{
+        position:toast.POSITION.TOP_LEFT
       });
     }
     else{
@@ -39,8 +40,8 @@ const PasswordReset = () => {
       setMessage(true);
     }
     else{
-      toast.error("invalid user",{
-      position:"top-center"
+      toast.error("Invalid user",{
+      position:toast.POSITION.TOP_LEFT
     })
     }
  }

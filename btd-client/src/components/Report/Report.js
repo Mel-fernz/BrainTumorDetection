@@ -42,7 +42,7 @@ const Report = (props) => {
     // </div>
     <div className='report'>
       <div className='pdf-data' id="pdfdata">
-        <h3 className='heading'>Laboratory Test Report</h3>
+        <h3 className='heading'>LABORATORY TEST REPORT</h3>
         <table>
         <tr>
           <td><b>Patient Name:</b></td>
@@ -68,7 +68,7 @@ const Report = (props) => {
         </table>            
         <h4>MRI Scan:</h4>
         {<img src={props.mriImage} alt="Mri scan"/>}
-        <p>Test Results:</p>
+        <p>Test Results: {props.results}</p>
       </div>
       
       <div className='flex-btn'>

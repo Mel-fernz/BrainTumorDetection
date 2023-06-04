@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "../page.css";
 import PWDRequisite from "../../components/PWDRequisite";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -12,11 +14,11 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  // var loggedUser = {
-  //   // name,
-  //   email,
-  //   password,
-  // };
+  var loggedUser = {    
+    email,
+    password,
+    cpassword
+  };
 
   //password strength
   const [pwdRequisite, setPWDRequisite] = useState(false);
@@ -39,8 +41,8 @@ const Signup = () => {
     const { value } = e.target;
     const capsLetterCheck = /[A-Z]/.test(value);
     const numberCheck = /[0-9]/.test(value);
-    const pwdLengthCheck = value.length >= 8;
-  const specialCharCheck = /[.-_$*()#@!%/]/.test(value);
+    const pwdLengthCheck = value.length >= 6;
+  const specialCharCheck = /[!@#$%^&*.-_]/.test(value);
     setChecks({
       capsLetterCheck,
       numberCheck,
@@ -66,17 +68,21 @@ const Signup = () => {
         });
         const data = await response.json();
           
-        if (response.ok) {
-        
+        if (response.ok) {   
+          // toast.success("Signup Successful!", {
+          //   position: toast.POSITION.TOP_CENTER
+          // });     
           navigate("/");
-        } else {
-
-          alert("Signup failed");
+        } 
+        else {
+          toast.error("Signup Failed", {
+            position: toast.POSITION.TOP_LEFT
+          });
           // setError(data.error)
-          // throw new Error("Signup failed");
+          throw new Error("Signup failed");
         }
       } catch (error) {
-        console.error("Error:", error);
+        console.error(error);
         // Handle the error
       }
     
@@ -122,15 +128,7 @@ const Signup = () => {
 
         <form className="form-wrapper">
           <div className="name">
-            {/* <label className="label">USERNAME:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                id="exampleInputName"
-                placeholder="name"
-              ></input> */}
+            
             <div className="email">
               <label className="label">EMAIL:</label>
               <input
@@ -204,12 +202,13 @@ const Signup = () => {
             <br></br>
 
             <div>
-              <button className="submit" onClick={handleSignUp}>
+              <button className="submit" type="button" onClick={handleSignUp}>
                 SIGNUP
               </button>
             </div>
           </div>
         </form>
+        <ToastContainer/>
       </div>
     </div>
   );
@@ -217,91 +216,103 @@ const Signup = () => {
 
 export default Signup;
 
+
 // import React, { useState } from "react";
-// import Login from "./Login";
-// import "./page.css";
-// import PWDRequisite from "./PWDRequisite";
+
+// import "../page.css";
+// import PWDRequisite from "../../components/PWDRequisite";
+// import { useNavigate } from "react-router-dom";
+// import { textAlign } from "@mui/system";
+// import { textFieldClasses } from "@mui/material";
 
 // const Signup = () => {
-// const handleFormSubmit = (event) =>{
-//     event.preventDefault();
-// };
-// const [isSignedUp, setIsSignedUp] = useState(false);
-// const [name, setName] = useState("");
-// const [email, setEmail] = useState("");
-// const [password, setPassword] = useState("");
-// const [cpassword, setCPassword] = useState("");
 
-// var loggedUser = {
-//   name,
-//   email,
-//   password,
-// };
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [cpassword, setCPassword] = useState("");
 
-//password strength
-// const [pwdRequisite, setPWDRequisite] = useState(false);
-// const [checks, setChecks] = useState({
-//   capsLetterCheck: false,
-//   numberCheck: false,
-//   pwdLengthCheck: false,
-//   specialCharCheck: false,
-// });
+//   // const navigation = useNavigate();
+//   const navigate = useNavigate();
+//   const [errorMessage, setError] = useState("");
 
-// const handleOnFocus = (e) => {
-//   setPWDRequisite(true);
-// };
 
-// const handleOnBlur = (e) => {
-//   setPWDRequisite(false);
-// };
 
-// const handleOnKeyUp = (e) => {
-//   const { value } = e.target;
-//   const capsLetterCheck = /[A-Z]/.test(value);
-//   const numberCheck = /[0-9]/.test(value);
-//   const pwdLengthCheck = value.length >= 8;
-//   const specialCharCheck = /[!@#$%^&*]/.test(value);
-//   setChecks({
-//     capsLetterCheck,
-//     numberCheck,
-//     pwdLengthCheck,
-//     specialCharCheck,
+
+//   var loggedUser = {
+//     email,
+//     password,
+//     cpassword
+//   };
+
+//   //password strength
+//   const [pwdRequisite, setPWDRequisite] = useState(false);
+//   const [checks, setChecks] = useState({
+//     capsLetterCheck: false,
+//     numberCheck: false,
+//     pwdLengthCheck: false,
+//     specialCharCheck: false,
 //   });
-// };
 
-// const handleSignUp = () => {
-//   let users =
-//     localStorage.getItem("Users") == null
-//       ? []
-//       : JSON.parse(localStorage.getItem("Users"));
-//   console.log(users);
-//   if (users.length === 0) {
-//     alert("Invalid Email or Password");
-//   } else {
-//     let userindex = users.findIndex(
-//       (x) => x.email === email && x.password === password
-//     );
+//   const handleOnFocus = (e) => {
+//     setPWDRequisite(true);
+//   };
 
-//     if (userindex === -1) {
-//       alert.error("Invalid Email or Password");
-//     } else {
-//       localStorage.setItem("name", JSON.stringify(users[userindex].name));
-//       localStorage.setItem(
-//         "password",
-//         JSON.stringify(users[userindex].password)
-//       );
-//       alert.success("Login Success");
-//       localStorage.setItem("loggedInDetails", JSON.stringify(loggedUser));
-//     }
-//   }
+//   const handleOnBlur = (e) => {
+//     setPWDRequisite(false);
+//   };
 
-//   setIsSignedUp(true);
-// };
-// return (
-//   <div className="container">
-//     {isSignedUp === true ? (
-//       <Login />
-//     ) : (
+//   const handleOnKeyUp = (e) => {
+//     const { value } = e.target;
+//     const capsLetterCheck = /[A-Z]/.test(value);
+//     const numberCheck = /[0-9]/.test(value);
+//     const pwdLengthCheck = value.length >= 8;
+//     const specialCharCheck = /[!@#$%^&*]/.test(value);
+//     setChecks({
+//       capsLetterCheck,
+//       numberCheck,
+//       pwdLengthCheck,
+//       specialCharCheck,
+//     });
+//   };
+
+//   const handleSignUp = async () => {
+
+// console.log("signup");
+ 
+//       try {
+//         const response = await fetch("/register", {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json"
+//           },
+//           body: JSON.stringify({
+//             email,
+//             password,
+//             cpassword
+//           })
+//         });
+//         const data = await response.json();
+          
+//         if (response.ok) {
+        
+//           navigate("/");
+//         } else {
+
+//           setError(data.error)
+//           throw new Error("Signup failed");
+//         }
+//       } catch (error) {
+//         console.error(error);
+//         // Handle the error
+//       }
+//     };
+
+
+
+
+  
+//   return (
+//     <div className="container">
 //       <div className="text1">
 //         <div>
 //           <h1 className="title">SIGNUP</h1>
@@ -309,240 +320,303 @@ export default Signup;
 
 //         <form className="form-wrapper">
 //           <div className="name">
-/* <label className="label">USERNAME:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                id="exampleInputName"
-                placeholder="name"
-              ></input> */
-/* <div className="email">
-                <label className="label">EMAIL:</label>
-                <input
-                  type="email"              
-                  className="input"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  id="exampleInputEmail1"
-                  placeholder="email@email.com"
-                ></input>
-              </div>
-              <div className="password">
-                <label className="label">PASSWORD:</label>
-                <input
-                  type="password"
-                  className="input"
-                  name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  onFocus={handleOnFocus}
-                  onBlur={handleOnBlur}
-                  onKeyUp={handleOnKeyUp}
-                  id="exampleInputPassword1"
-                  placeholder="password"
-                ></input>
-              </div>
+//             {/* <label className="label">USERNAME:</label>
+//               <input
+//                 type="text"
+//                 className="form-control"
+//                 value={name}
+//                 onChange={(e) => setName(e.target.value)}
+//                 id="exampleInputName"
+//                 placeholder="name"
+//               ></input> */}
+//             <div className="email">
+//               <label className="label">EMAIL:</label>
+//               <input
+//                 type="email"
+//                 className="input"
+//                 name="email"
+//                 value={email}
+//                 onChange={(e) => setEmail(e.target.value)}
+//                 id="exampleInputEmail1"
+//                 placeholder="email@email.com"
+//               ></input>
+//             </div>
+//             <div className="password">
+//               <label className="label">PASSWORD:</label>
+//               <input
+//                 type="password"
+//                 className="input"
+//                 name="password"
+//                 value={password}
+//                 onChange={(e) => setPassword(e.target.value)}
+//                 onFocus={handleOnFocus}
+//                 onBlur={handleOnBlur}
+//                 onKeyUp={handleOnKeyUp}
+//                 id="exampleInputPassword1"
+//                 placeholder="password"
+//               ></input>
+//             </div>
 
-              <div>
-                {pwdRequisite ? (
-                  <PWDRequisite
-                    capsLetterFlag={
-                      checks.capsLetterCheck ? "valid" : "invalid"
-                    }
-                    numberFlag={checks.numberCheck ? "valid" : "invalid"}
-                    pwdLengthFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
-                    specialCharFlag={
-                      checks.specialCharCheck ? "valid" : "invalid"
-                    }
-                  />
-                ) : null}
-              </div>
+//             <div>
+//               {pwdRequisite ? (
+//                 <PWDRequisite
+//                   capsLetterFlag={checks.capsLetterCheck ? "valid" : "invalid"}
+//                   numberFlag={checks.numberCheck ? "valid" : "invalid"}
+//                   pwdLengthFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
+//                   specialCharFlag={
+//                     checks.specialCharCheck ? "valid" : "invalid"
+//                   }
+//                 />
+//               ) : null}
+//             </div>
 
-              <div className="password">
-                <label className="label">CONFIRM PASSWORD:</label>
-                <input
-                  type="password"
-                  className="input"
-                  name="password"
-                  value={cpassword}
-                  onChange={(e) => setCPassword(e.target.value)}
-                  onFocus={handleOnFocus}
-                  onBlur={handleOnBlur}
-                  onKeyUp={handleOnKeyUp}
-                  id="exampleInputPassword1"
-                  placeholder="password"
-                ></input>
-              </div>
+//             <div className="password1">
+//               <label className="label">CONFIRM PASSWORD:</label>
+//               <input
+//                 type="password"
+//                 className="input"
+//                 name="password"
+//                 value={cpassword}
+//                 onChange={(e) => setCPassword(e.target.value)}
+//                 onFocus={handleOnFocus}
+//                 onBlur={handleOnBlur}
+//                 onKeyUp={handleOnKeyUp}
+//                 id="exampleInputPassword1"
+//                 placeholder="password"
+//               ></input>
+//             </div>
 
-              <div>
-                {pwdRequisite ? (
-                  <PWDRequisite
-                    capsLetterFlag={
-                      checks.capsLetterCheck ? "valid" : "invalid"
-                    }
-                    numberFlag={checks.numberCheck ? "valid" : "invalid"}
-                    pwdLengthFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
-                    specialCharFlag={
-                      checks.specialCharCheck ? "valid" : "invalid"
-                    }
-                  />
-                ) : null}
-              </div>
-              <br></br>
-             
+//             <div>
+//               {pwdRequisite ? (
+//                 <PWDRequisite
+//                   capsLetterFlag={checks.capsLetterCheck ? "valid" : "invalid"}
+//                   numberFlag={checks.numberCheck ? "valid" : "invalid"}
+//                   pwdLengthFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
+//                   specialCharFlag={
+//                     checks.specialCharCheck ? "valid" : "invalid"
+//                   }
+//                 />
+//               ) : null}
+//             </div>
+//             <br></br>
+//             <br></br>
 
-              <div>
-                <button className="submit" onClick={handleSignUp}>
-                  SIGNUP
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default Signup; */
-
-// import './Signup.css';
-// import Button from '@mui/material/Button';
-// import Box from '@mui/material/Box';
-// import React, { useState } from 'react';
-// import Login from './Login';
-
-// const Signup=()=>{
-//   const [isSignedUp, setIsSignedUp] = useState(false);
-
-//   const handleSignUp = () => {
-//     setIsSignedUp(true);
-//   };
-
-//     return (
-//       <div className='run'>
-
-//       <>
-//       {isSignedUp===true?<Login/>:
-//       <div className="text1">
-
-//        <h1 className='sign'>SIGNUP</h1>
-//         <br></br>
-
-//         <label className='Username'>USERNAME:</label><br></br>
-//         <input type="text" className='Username' name="USERNAME"></input>
-//           <br></br>
-//           <br></br>
-//           <label className='email1'>EMAIL:</label><br></br>
-//         <input type="text" className='email' name="EMAIL"></input>
-//         <br></br>
-//           <br></br>
-//         <label className='pin1'>PASSWORD:</label><br></br>
-//         <input type="password" className='pin' name="Password"></input><br></br>
-//         <br></br>
-//         <label className='pin1'>CONFIRM PASSWORD:</label><br></br>
-//         <input type="password" className='pin' name="Password"></input><br></br>
-//         <Box
-//               sx={{
-//             marginLeft: "160px",
-
-//               }}
-//             >
-//                 <br></br>
-
-//         <Button variant="contained" size="large"  onClick={handleSignUp}>SIGNUP</Button>
-//         </Box>
+//             <div>
+//               <button className="submit" type="button" onClick={handleSignUp}>
+//                 SIGNUP
+//               </button>
+//               <p style={{color: "red",
+//     textAlign: "center",
+//     textTransform: "uppercase"}}>{errorMessage}</p>
+//             </div>
+//           </div>
+//         </form>
 //       </div>
-//         }
-//       </>
-
-//       </div>
-
-//     );
-//   }
-
-//   export default Signup;
-
-// import TextField from '@mui/material/TextField';
-// import Button from '@mui/material/Button';
-// import Grid from '@mui/material/Grid';
-// import Stack from '@mui/material/Stack';
-// import Container from '@mui/material/Container';
-// import Login from './Login';
-// import React, { useState } from 'react';
-
-// const Signup=()=>{
-//   const [isSignedUp, setIsSignedUp] = useState(false);
-
-//   const handleSignUp = () => {
-//     setIsSignedUp(true);
-//   };
-
-//   // if (isSignedUp) {
-//   //   return <Login />;
-//   // }
-
-// return (
-//   <>
-// {isSignedUp===true?<Login/>:
-// <Stack spacing={3} direction="row">
-// <Container
-// sx={{
-//   width: "500px",
-//   height: "500px",
-//   marginLeft: "450px",
-//   padding: "32px 20px",
-//   top: "64px",
-//   gap: "64px",
-// }}
-// >
-
-// <Grid container spacing={1}></Grid>
-
-// <Grid item xs={6} className="username">
-//   <h4>USERNAME</h4>
-//   <TextField id="outlined-basic" label="Username" variant="outlined" />
-//   </Grid>
-
-// <Grid item xs={6} className="email">
-//   <h4>EMAIL</h4>
-//   <TextField id="outlined-basic" label="Email" variant="outlined" />
-//   </Grid>
-
-//   <Grid item xs={6} className="password">
-//   <h4>PASSWORD</h4>
-// <TextField
-//      id="password"
-//      label="Password"
-//      type="password"
-//      variant="outlined"
-//    />
-//      </Grid>
-
-//      <Grid item xs={6} className="confirmPassword">
-//   <h4>CONFIRM PASSWORD</h4>
-// <TextField
-//      id="confirmPassword"
-//      label="Confirm Password"
-//      type="password"
-//      variant="outlined"
-//    />
-// </Grid>
-
-// <br></br>
-
-// <Button type='submit' variant='contained' color='primary' onClick={handleSignUp}>
-// Sign Up
-// </Button>
-
-// </Container>
-// </Stack>};
-// </>
-// );
-
-// }
+//     </div>
+//   );
+// };
 
 // export default Signup;
+
+
+// import React, { useState } from "react";
+
+// import "../page.css";
+// import PWDRequisite from "../../components/PWDRequisite";
+// import { useNavigate } from "react-router-dom";
+// import { textAlign } from "@mui/system";
+// import { textFieldClasses } from "@mui/material";
+
+// const Signup = () => {
+
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [cpassword, setCPassword] = useState("");
+
+//   // const navigation = useNavigate();
+//   const navigate = useNavigate();
+//   const [errorMessage, setError] = useState("");
+
+
+
+
+//   var loggedUser = {
+//     email,
+//     password,
+//     cpassword
+//   };
+
+//   //password strength
+//   const [pwdRequisite, setPWDRequisite] = useState(false);
+//   const [checks, setChecks] = useState({
+//     capsLetterCheck: false,
+//     numberCheck: false,
+//     pwdLengthCheck: false,
+//     specialCharCheck: false,
+//   });
+
+//   const handleOnFocus = (e) => {
+//     setPWDRequisite(true);
+//   };
+
+//   const handleOnBlur = (e) => {
+//     setPWDRequisite(false);
+//   };
+
+//   const handleOnKeyUp = (e) => {
+//     const { value } = e.target;
+//     const capsLetterCheck = /[A-Z]/.test(value);
+//     const numberCheck = /[0-9]/.test(value);
+//     const pwdLengthCheck = value.length >= 8;
+//     const specialCharCheck = /[!@#$%^&*]/.test(value);
+//     setChecks({
+//       capsLetterCheck,
+//       numberCheck,
+//       pwdLengthCheck,
+//       specialCharCheck,
+//     });
+//   };
+
+//   const handleSignUp = async () => {
+
+// console.log("signup");
+ 
+//       try {
+//         const response = await fetch("/register", {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json"
+//           },
+//           body: JSON.stringify({
+//             email,
+//             password,
+//             cpassword
+//           })
+//         });
+//         const data = await response.json();
+          
+//         if (response.ok) {
+        
+//           navigate("/");
+//         } else {
+
+//           setError(data.error)
+//           throw new Error("Signup failed");
+//         }
+//       } catch (error) {
+//         console.error(error);
+//         // Handle the error
+//       }
+//     };
+
+
+
+
+  
+//   return (
+//     <div className="container">
+//       <div className="text1">
+//         <div>
+//           <h1 className="title">SIGNUP</h1>
+//         </div>
+
+//         <form className="form-wrapper">
+//           <div className="name">
+//             {/* <label className="label">USERNAME:</label>
+//               <input
+//                 type="text"
+//                 className="form-control"
+//                 value={name}
+//                 onChange={(e) => setName(e.target.value)}
+//                 id="exampleInputName"
+//                 placeholder="name"
+//               ></input> */}
+//             <div className="email">
+//               <label className="label">EMAIL:</label>
+//               <input
+//                 type="email"
+//                 className="input"
+//                 name="email"
+//                 value={email}
+//                 onChange={(e) => setEmail(e.target.value)}
+//                 id="exampleInputEmail1"
+//                 placeholder="email@email.com"
+//               ></input>
+//             </div>
+//             <div className="password">
+//               <label className="label">PASSWORD:</label>
+//               <input
+//                 type="password"
+//                 className="input"
+//                 name="password"
+//                 value={password}
+//                 onChange={(e) => setPassword(e.target.value)}
+//                 onFocus={handleOnFocus}
+//                 onBlur={handleOnBlur}
+//                 onKeyUp={handleOnKeyUp}
+//                 id="exampleInputPassword1"
+//                 placeholder="password"
+//               ></input>
+//             </div>
+
+//             <div>
+//               {pwdRequisite ? (
+//                 <PWDRequisite
+//                   capsLetterFlag={checks.capsLetterCheck ? "valid" : "invalid"}
+//                   numberFlag={checks.numberCheck ? "valid" : "invalid"}
+//                   pwdLengthFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
+//                   specialCharFlag={
+//                     checks.specialCharCheck ? "valid" : "invalid"
+//                   }
+//                 />
+//               ) : null}
+//             </div>
+
+//             <div className="password1">
+//               <label className="label">CONFIRM PASSWORD:</label>
+//               <input
+//                 type="password"
+//                 className="input"
+//                 name="password"
+//                 value={cpassword}
+//                 onChange={(e) => setCPassword(e.target.value)}
+//                 onFocus={handleOnFocus}
+//                 onBlur={handleOnBlur}
+//                 onKeyUp={handleOnKeyUp}
+//                 id="exampleInputPassword1"
+//                 placeholder="password"
+//               ></input>
+//             </div>
+
+//             <div>
+//               {pwdRequisite ? (
+//                 <PWDRequisite
+//                   capsLetterFlag={checks.capsLetterCheck ? "valid" : "invalid"}
+//                   numberFlag={checks.numberCheck ? "valid" : "invalid"}
+//                   pwdLengthFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
+//                   specialCharFlag={
+//                     checks.specialCharCheck ? "valid" : "invalid"
+//                   }
+//                 />
+//               ) : null}
+//             </div>
+//             <br></br>
+//             <br></br>
+
+//             <div>
+//               <button className="submit" type="button" onClick={handleSignUp}>
+//                 SIGNUP
+//               </button>
+//               <p style={{color: "red",
+//     textAlign: "center",
+//     textTransform: "uppercase"}}>{errorMessage}</p>
+//             </div>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Signup;
+

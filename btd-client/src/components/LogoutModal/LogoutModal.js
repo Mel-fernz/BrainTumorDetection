@@ -3,19 +3,27 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function AlertDialog() {
   const [open, setOpen] = useState(true);
+  const navigate = useNavigate();
+
 
   // const handleClickOpen = () => {
   //   setOpen(true);
   // }; 
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('btd-token');
+    navigate('/'); 
+  };
+
   const handleClose = () => {
     setOpen(false);
+    navigate(-1);
   };
 
   return (
@@ -31,13 +39,9 @@ export default function AlertDialog() {
         </DialogTitle> 
         <DialogActions>
 
-         <Link to="/" style={{textDecoration:'none'}}>
-          <Button onClick={handleClose}>Yes</Button>
-          </Link>
-
-         <Link to="/home" style={{textDecoration:'none'}}>
-          <Button onClick={handleClose} autoFocus>No</Button>
-          </Link> 
+          <Button onClick={handleLogout}>Yes</Button>
+          
+          <Button onClick={handleClose}>No</Button>
         </DialogActions>
       </Dialog>
     </div>

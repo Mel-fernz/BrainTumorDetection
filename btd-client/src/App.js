@@ -13,31 +13,22 @@ import Report from './components/Report/Report';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 function App() {
-const [showLogin, setShowLogin]=useState(false);
-
-  useEffect(() => {      
-    if (showLogin===false)
-    setShowLogin(true);
-    else
-    setShowLogin(false);
-  }, [])
   
   return ( 
     <>
-    {/* {showLogin===true?<Login/>: */}
       <Router>
    
         <Routes>
-        <Route path='/' exact element={<Login/>} />
-          <Route path='signup' element={<Signup/>} />
-          <Route path='password-reset' element={<PasswordReset/>} />
-          <Route path='forgotpassword:/id/:token' element={<ForgotPassword/>}/>
-          <Route path='home' element={<Home/>} />          
-          <Route path='logout' element={<Logout/>} />
+        <Route path="/" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="password-reset" element={<PasswordReset />} />
+          <Route path="forgotpassword:/id/:token" element={<ForgotPassword />}/>
+          <Route path="home" element={<Home />} />          
+          <Route path="logout" element={<Logout />} />
 
-          <Route path='test' element={<Test/>} />
-            <Route path='report' element={<Report/>}/>
-          <Route path='*' element={<ErrorPage/>} />
+          <Route path="test" element={<Test />} />
+            <Route path="report" element={<Report />}/>
+          <Route path="*" element={<ErrorPage />} />
 
           {/* </Route> */}
         </Routes>

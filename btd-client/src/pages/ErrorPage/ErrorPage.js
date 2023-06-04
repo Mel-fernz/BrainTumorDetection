@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import './ErrorPage.css';
 
 const ErrorPage = () => {
 
@@ -14,12 +15,15 @@ const ErrorPage = () => {
     navigate("/home");
   }
   return (
-    <div>
+    <div className="error-pg">
+      <div className="err-box">
       <h1>404</h1>
-      <h3>PAGE NOT FOUND</h3>
-      <p>The page you are looking for might have been removed <br />had its name changed <br />or is temporarily unavailable</p>
-      <button onClick={handleHome}>HOMEPAGE</button>
+      <h3>Page Not Found!</h3>
+      <h6>The page you are looking for might have been removed, had its  </h6><h6>name changed or is temporarily unavailable</h6>
+      <button onClick={handleHome}>BACK TO HOME PAGE</button>
     </div>
+    </div>
+    
   )
 }
 
